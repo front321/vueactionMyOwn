@@ -6,6 +6,7 @@
     <el-button type="info">hello</el-button>
     <el-button type="danger">hello</el-button>
     <el-button type="success">hello</el-button>
+    <el-tag type="tag">enenen</el-tag>
   </div>
 </template>
 
