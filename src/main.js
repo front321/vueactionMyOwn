@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {Button, Tag} from 'element-ui'
+import './plugins/element.js'
 
-Vue.use(Button)
-Vue.use(Tag)
 Vue.config.productionTip = false
 
 new Vue({
