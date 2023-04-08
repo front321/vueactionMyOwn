@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './plugins/element.js'
+//导入字体库的css
+import 'font-awesome/css/font-awesome.min.css'
 
 Vue.config.productionTip = false
 

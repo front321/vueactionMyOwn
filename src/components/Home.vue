@@ -7,6 +7,7 @@
     <el-button type="danger">hello</el-button>
     <el-button type="success">hello</el-button>
     <el-tag type="tag">enenen</el-tag>
+    <i class="fa fa-user"></i>
   </div>
 </template>
 
