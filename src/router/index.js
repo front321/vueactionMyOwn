@@ -9,7 +9,8 @@ export default new Router({
         {
             path: '/home',
             //component: Home
-            component: () => import('@/components/Home') //路由懒加载
+            //component: () => import('@/components/Home') //路由懒加载
+            component: resolve => require(['@/components/Home'], resolve)
         }
     ],
     mode: 'history'
