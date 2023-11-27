@@ -40,4 +40,21 @@ export default {
 </script>
 
 <style lang="scss">
+  .login {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: #409EFF;
+      .box-card {
+      width: 450px;
+      margin: 200px auto;
+      .el-card__header {
+          font-size: 34px;
+      }
+      .el-button {
+          width: 100%;
+          } 
+      }
+  }
+  
 </style>

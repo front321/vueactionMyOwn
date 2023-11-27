@@ -7,7 +7,13 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
+            path: '/',
+            redirect: 'login',
+            component: () => import('@/components/Login')
+        },
+        {
             path: '/login',
+            name: 'Login',
             component: () => import('@/components/Login')
             //component: resolve => require(['@/components/Login'], resolve)
         },
