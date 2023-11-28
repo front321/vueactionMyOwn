@@ -36,6 +36,10 @@
 </template>
 
 <script>
+let obj = {
+    username: 'tom',
+    password: 'Pee'
+};
 export default {
     data() {
         return {
@@ -49,7 +53,20 @@ export default {
         login() {
             this.$refs["form"].validate((valid) => {
                 if (valid) {
-                    console.log(this.form)
+                    console.log(this.form);
+                    this.axios.post('http://localhost:2002/sso/test', obj)
+                    .then(res => {
+                        console.log(res);
+                        console.log("res.data.code" + res.data.code);
+                        if (res.data.code == 0) {
+                            localStorage.setItem('username', res.data.username);
+                            this.$message({message: res.data.message, type: 'success'});
+                            this.$router.push('/home');
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
                 } else {
                     console.error(this.form)
                 }
