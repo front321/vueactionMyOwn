@@ -8,21 +8,14 @@
             <el-form
             label-width="80px"
             :model="form"
-            ref="form">
-                <el-form-item label="用户名" prop="username"
-                :rules="[
-                {required: true, message: '请输入用户名', trigger: 'blur'},
-                {min: 6, max: 12, message: '长度在6-12位字符', trigger: 'blur'}
-                ]">
+            ref="form"
+            :rules="rules"
+            >
+                <el-form-item label="用户名" prop="username">
                     <el-input v-model="form.username"></el-input>
                 </el-form-item>
 
-                <el-form-item label="密码" prop="password"
-                :rules="[
-                {required: true, message: '请输入密码', trigger: 'blur'},
-                {min: 6, max: 12, message: '长度在6-12位字符', trigger: 'blur'}
-                ]"
-                >
+                <el-form-item label="密码" prop="password">
                     <el-input type="password" v-model="form.password"></el-input>
                 </el-form-item>
 
@@ -36,25 +29,52 @@
 </template>
 
 <script>
-let obj = {
-    username: 'tom',
-    password: 'Pee'
-};
 export default {
     data() {
         return {
             form: {
                 username: '',
                 password: ''
+            },
+            rules: {
+                username: [
+                    {required: true, message: '请输入用户名', trigger: 'blur'},
+                    {validator: this.validateUsername, trigger: 'blur'}
+                ],
+                password: [
+                    {required: true, message: '请输入密码eee', trigger: 'blur'},
+                    {validator: this.validatePassword, trigger: 'blur'}
+                ]
             }
         }
     },
     methods: {
+        //校验用户名
+        validateUsername(rule, value, callback) {
+            //用户名由字母（大小写）、数字、下划线和短横线组成，长度在4到16个字符之间
+            const pattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!pattern.test(value)) {
+                callback(new Error('用户名格式不正确'));
+            } else {
+                callback();
+            }
+        },
+        //校验密码
+        validatePassword(rule, value, callback) {
+            //密码至少包含一个小写字母、一个大写字母和一个数字，长度至少为8个字符
+            const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+            if (!pattern.test(value)) {
+                callback(new Error('密码格式不正确'));
+                } else {
+                    callback();
+                }
+            },
+
         login() {
             this.$refs["form"].validate((valid) => {
                 if (valid) {
                     console.log(this.form);
-                    this.axios.post('http://localhost:2002/sso/test', obj)
+                    this.axios.post('http://localhost:2002/sso/test', this.form)
                     .then(res => {
                         console.log(res);
                         console.log("res.data.code" + res.data.code);
