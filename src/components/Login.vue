@@ -55,6 +55,7 @@ export default {
             }
         };
         return {
+            labelPosition: 'right',
             form: {
                 username: '',
                 password: ''
