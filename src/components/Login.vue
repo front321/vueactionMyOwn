@@ -10,17 +10,18 @@
             :model="form"
             ref="form"
             :rules="rules"
+            @submit.native.prevent="login"
             >
                 <el-form-item label="用户名" prop="username">
-                    <el-input v-model="form.username"></el-input>
+                    <el-input v-model="form.username" @keyup.enter.native="login"></el-input>
                 </el-form-item>
 
                 <el-form-item label="密码" prop="password">
-                    <el-input type="password" v-model="form.password"></el-input>
+                    <el-input type="password" v-model="form.password" @keyup.enter.native="login"></el-input>
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="primary" @click="login()">登录</el-button>
+                    <el-button type="primary" @click="login">登录</el-button>
                 </el-form-item>
             </el-form>
 
