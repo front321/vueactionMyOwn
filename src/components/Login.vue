@@ -96,15 +96,18 @@ export default {
 
         login() {
             this.$refs["form"].validate((valid) => {
+                debugger;
                 if (valid) {
                     console.log(this.form);
-                    this.axios.post('http://localhost:2002/sso/test', this.form)
+                    this.axios.post('https://jsonplaceholder.typicode.com/posts', this.form)
                     .then(res => {
                         console.log(res);
-                        console.log("res.data.code" + res.data.code);
-                        if (res.data.code == 0) {
+                        debugger;
+                        console.log("res.data.code" + JSON.stringify(res.data));
+                        if (res.status == 201) {
+                            debugger;
                             localStorage.setItem('username', res.data.username);
-                            this.$message({message: res.data.message, type: 'success'});
+                            //this.$message({message: res.data.message, type: 'success'});
                             this.$router.push('/home');
                         }
                     })
