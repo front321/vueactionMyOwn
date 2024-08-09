@@ -61,11 +61,11 @@ export default {
             },
             rules: {
                 username: [
-                    // {required: true, message: '请输入用户名11', trigger: 'blur'},
+                    {required: true, message: '请输入用户名', trigger: 'blur'},
                     {validator: validateUsername, trigger: 'blur'}
                 ],
                 password: [
-                    // {required: true, message: '请输入密码11', trigger: 'blur'},
+                    {required: true, message: '请输入密码', trigger: 'blur'},
                     {validator: validatePassword, trigger: 'blur'}
                 ]
             }
