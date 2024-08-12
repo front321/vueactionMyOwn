@@ -160,7 +160,13 @@ export default {
       width: 100%;
       height: 100%;
       position: absolute;
-      background: #409EFF;
+      //background: #409EFF;
+      background: url('../assets/bg.png') center no-repeat;
+      background-size: cover;
+    // background-image: url('../assets/bg.png'); /* 设置背景图 */
+    // background-size: cover; /* 背景图覆盖整个元素 */
+    // background-position: center; /* 背景图居中显示 */
+    // background-repeat: no-repeat; /* 背景图不重复 */
       .box-card {
       width: 450px;
       margin: 200px auto;
