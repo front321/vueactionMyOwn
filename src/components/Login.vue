@@ -32,6 +32,7 @@
 <script>
 import {nameRule, passwordRule} from '../utils/validate.js'
 import {setToken} from '@/utils/setToken.js'
+import {login} from '@/api/api.js'
 export default {
     data() {
         // const validateUsername = (rule, value, callback) => {
@@ -99,27 +100,54 @@ export default {
 
         login() {
             this.$refs["form"].validate((valid) => {
-                debugger;
+                // debugger;
+                // if (valid) {
+                //     console.log(this.form);
+                //     this.axios.post('https://jsonplaceholder.typicode.com/posts', this.form)
+                //     .then(res => {
+                //         console.log(res);
+                //         debugger;
+                //         console.log("res.data.code" + JSON.stringify(res.data));
+                //         if (res.status == 201) {
+                //             debugger;
+                //             //localStorage.setItem('username', res.data.username);
+                //             setToken('username', res.data.username);
+                //             //this.$message({message: res.data.message, type: 'success'});
+                //             this.$router.push('/home');
+                //         }
+                //     })
+                //     .catch(err => {
+                //         console.error(err);
+                //     });
+                // } else {
+                //     console.error(this.form)
+                // }
+
                 if (valid) {
                     console.log(this.form);
-                    this.axios.post('https://jsonplaceholder.typicode.com/posts', this.form)
-                    .then(res => {
-                        console.log(res);
-                        debugger;
-                        console.log("res.data.code" + JSON.stringify(res.data));
-                        if (res.status == 201) {
+                    // this.service.post('/api2/login', this.form)
+                    // .then(res => {
+                    //     if (res.data.code === 200) {
+                    //         debugger;
+                    //         setToken('username', res.data.data.username);
+                    //         setToken('token', res.data.data.token)
+                    //         this.$message({message: res.data.message, type: 'success'});
+                    //         this.$router.push('/home');
+                    //     }
+                    //     console.log(res)
+                    // })
+                    login(this.form).then(res => {
+                        if (res.data.code === 200) {
                             debugger;
-                            //localStorage.setItem('username', res.data.username);
-                            setToken('username', res.data.username);
-                            //this.$message({message: res.data.message, type: 'success'});
+                            setToken('username', res.data.data.username);
+                            setToken('token', res.data.data.token)
+                            this.$message({message: res.data.message, type: 'success'});
                             this.$router.push('/home');
                         }
+                        console.log(res)
                     })
-                    .catch(err => {
-                        console.error(err);
-                    });
                 } else {
-                    console.error(this.form)
+                    console.error(this.form);
                 }
             })
         }
