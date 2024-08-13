@@ -6,7 +6,7 @@ export function login(data) {
     return service({
         method: 'post',
         url: '/api2/login',
-        data: data
+        data: data //可简写为data
     })
 }
 
