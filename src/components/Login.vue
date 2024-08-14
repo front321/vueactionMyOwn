@@ -147,8 +147,8 @@ export default {
                         console.log(res)
                     })
                     .catch(error => {
-                        this.$message({message: "sys error", type: 'success'});
-                        this.$router.push('/notfound');
+                        this.$message({message: "sys error", type: 'error'});
+                        //this.$router.push('/notfound');
                         console.log("error：" + error)
                     });
                 } else {

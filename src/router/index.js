@@ -25,10 +25,10 @@ export default new Router({
         }
         ,
         {
-            path: '/notfound',
+            path: '*',//任何未被其他路由定义的路径都会匹配这个路由。
+            name: 'NotFound',
             //component: Home
-            //component: () => import('@/components/Home') //路由懒加载
-            component: resolve => require(['@/components/NotFound'], resolve) //异步组件
+            component: () => import('@/components/NotFound') //路由懒加
         }
     ],
     mode: 'history'
