@@ -23,6 +23,13 @@ export default new Router({
             //component: () => import('@/components/Home') //路由懒加载
             component: resolve => require(['@/components/Home'], resolve) //异步组件
         }
+        ,
+        {
+            path: '/notfound',
+            //component: Home
+            //component: () => import('@/components/Home') //路由懒加载
+            component: resolve => require(['@/components/NotFound'], resolve) //异步组件
+        }
     ],
     mode: 'history'
 })
